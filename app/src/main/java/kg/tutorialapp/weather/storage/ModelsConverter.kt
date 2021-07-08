@@ -8,9 +8,9 @@ import kg.tutorialapp.weather.CurrentForeCast
 class ModelsConverter {
     @TypeConverter
     fun fromCurrentForeCastToJson(forecast: CurrentForeCast?): String? =
-        Gson().toJson(forecast)
+            Gson().toJson(forecast)
 
     @TypeConverter
     fun fromJsonToCurrentForeCast(json: String?): CurrentForeCast? =
-        Gson().fromJson(json, object : TypeToken<CurrentForeCast>() {}.type)
+            Gson().fromJson(json, object : TypeToken<CurrentForeCast>() {}.type)
 }

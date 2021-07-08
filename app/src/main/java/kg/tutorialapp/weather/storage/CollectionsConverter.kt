@@ -9,17 +9,17 @@ import kg.tutorialapp.weather.HourlyForecast
 class CollectionsConverter {
     @TypeConverter
     fun fromHourlyForeCastListToJson(list: List<HourlyForecast>?): String? =
-        Gson().toJson(list)
+            Gson().toJson(list)
 
     @TypeConverter
     fun fromJsonToHourlyForeCastList(json: String?): List<HourlyForecast>? =
-        Gson().fromJson(json, object : TypeToken<List<HourlyForecast>>() {}.type)
+            Gson().fromJson(json, object : TypeToken<List<HourlyForecast>>() {}.type)
 
     @TypeConverter
     fun fromDailyForeCastListToJson(list: List<DailyForecast>?): String? =
-        Gson().toJson(list)
+            Gson().toJson(list)
 
     @TypeConverter
     fun fromJsonToDailyForeCastList(json: String?): List<DailyForecast>? =
-        Gson().fromJson(json, object : TypeToken<List<DailyForecast>>() {}.type)
+            Gson().fromJson(json, object : TypeToken<List<DailyForecast>>() {}.type)
 }

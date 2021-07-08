@@ -9,9 +9,9 @@ import kg.tutorialapp.weather.ForeCast
 
 
 @Database(
-    entities = [ForeCast::class],
-    version = 1,
-    exportSchema = false
+        entities = [ForeCast::class],
+        version = 1,
+        exportSchema = false
 )
 @TypeConverters(ModelsConverter::class, CollectionsConverter::class)
 abstract class ForeCastDatabase : RoomDatabase() {
@@ -25,12 +25,12 @@ abstract class ForeCastDatabase : RoomDatabase() {
         fun getInstance(context: Context): ForeCastDatabase {
             if (DB == null) {
                 DB = Room.databaseBuilder(
-                    context,
-                    ForeCastDatabase::class.java,
-                    DB_NAME
+                        context,
+                        ForeCastDatabase::class.java,
+                        DB_NAME
                 )
-                    .fallbackToDestructiveMigration()
-                    .build()
+                        .fallbackToDestructiveMigration()
+                        .build()
             }
             return DB!!
         }

@@ -7,42 +7,44 @@ import retrofit2.http.*
 interface PostsApi {
     @GET("posts/{id}")
     fun fetchPostById(
-        @Path("id") id:Int
-    ):Call<Post>
+            @Path("id") id: Int
+    ): Call<Post>
+
     @POST("posts")
     fun createPost(
-        @Body post: Post
-    ):Call<Post>
+            @Body post: Post
+    ): Call<Post>
 
     @POST("posts")
     @FormUrlEncoded
     fun createPostUsingFields(
-     @Field("userId") userId:Int,
-     @Field("title") title:String,
-     @Field("body") body:String
+            @Field("userId") userId: Int,
+            @Field("title") title: String,
+            @Field("body") body: String
 
-    ):Call<Post>
+    ): Call<Post>
 
     @POST("posts")
     @FormUrlEncoded
     fun createPostUsingFieldMap(
-        @FieldMap map:Map<String,String>
-    ):Call<Post>
+            @FieldMap map: Map<String, String>
+    ): Call<Post>
 
     @PUT("posts/{id}")
     fun putPost(
-            @Path("id") id:String,
+            @Path("id") id: String,
             @Body post: Post
-    ):Call<Post>
+    ): Call<Post>
 
     @PATCH("posts/{id}")
     fun PatchPost(
-            @Path("id") id:String,
+            @Path("id") id: String,
             @Body post: Post
-    ):Call<Post>
+    ): Call<Post>
+
     @DELETE("posts/{id}")
     fun deletePost(
-            @Path("id") id:String
-    ):Call<Unit>
+            @Path("id") id: String
+    ): Call<Unit>
 
 }

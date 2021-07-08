@@ -11,16 +11,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 object WeatherClient {
     private val okhttp by lazy {
         val interceptor =
-            HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
+                HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
         OkHttpClient.Builder().addInterceptor(interceptor).build()
     }
     private val retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org/data/2.5/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .client(okhttp)
-            .build()
+                .baseUrl("https://api.openweathermap.org/data/2.5/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(okhttp)
+                .build()
     }
     val weatherAPI by lazy {
         retrofit.create(WeatherAPI::class.java)
