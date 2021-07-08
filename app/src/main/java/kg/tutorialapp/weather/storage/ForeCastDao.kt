@@ -1,9 +1,11 @@
 package kg.tutorialapp.weather.storage
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import io.reactivex.Completable
 import io.reactivex.Single
 import kg.tutorialapp.weather.ForeCast
+
 
 @Dao
 interface ForeCastDao {
@@ -17,11 +19,11 @@ interface ForeCastDao {
     fun delete(forecast: ForeCast): Completable
 
     @Query("select * from ForeCast")
-    fun getAll(): Single<ForeCast>
+    fun getAll(): LiveData<ForeCast>
 
     @Query("select * from ForeCast where id=:id")
-    fun getById(id:Long): Single<ForeCast>
+    fun getById(id: Long): Single<ForeCast>
 
-//    @Query("delete * from ForeCast")
-//    fun deleteAll():Completable
+    @Query("delete  from ForeCast")
+    fun deleteAll(): Completable
 }

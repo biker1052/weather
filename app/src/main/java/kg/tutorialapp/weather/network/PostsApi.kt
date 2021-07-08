@@ -3,7 +3,6 @@ package kg.tutorialapp.weather.network
 import kg.tutorialapp.weather.models.Post
 import retrofit2.Call
 import retrofit2.http.*
-import java.sql.RowId
 
 interface PostsApi {
     @GET("posts/{id}")

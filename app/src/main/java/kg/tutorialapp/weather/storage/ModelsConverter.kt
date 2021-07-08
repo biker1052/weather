@@ -4,7 +4,6 @@ import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kg.tutorialapp.weather.CurrentForeCast
-import kg.tutorialapp.weather.ForeCast
 
 class ModelsConverter {
     @TypeConverter

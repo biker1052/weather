@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kg.tutorialapp.weather.storage.ForeCastDatabase
@@ -22,7 +24,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         variables()
         makeRxCall()
-        getFromDb()
+
+        db.foreCastDao().getAll().observe(this, Observer {
+            tv_forecast_list.text = it?.toString()
+        }
+
+        )
     }
 
     private fun variables() {
@@ -35,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         WeatherClient.weatherAPI.fetchWeather()
                 .subscribeOn(Schedulers.io())
                 .map {
+                    db.foreCastDao().deleteAll()
                     db.foreCastDao().insert(it)
                     it
                 }
@@ -48,21 +56,23 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    @SuppressLint("CheckResult")
-    private fun getFromDb() {
-        db.foreCastDao()
-                .getAll()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        {
-                           tv_forecast_list.text = it.toString()
-                        },
-                        {
-
-                        })
-
-    }
+//    @SuppressLint("CheckResult")
+//    private fun getFromDb() {
+//        db.foreCastDao()
+//                .getAll()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(
+//                        {
+//                            tv_forecast_list.text = it?.toString()
+//                            Toast.makeText(this, "getFromDb", Toast.LENGTH_LONG).show()
+//                        },
+//                        {
+//                            Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+//                            Log.i(TAG,it.message.toString())
+//                        })
+//
+//    }
 
 
     companion object {
