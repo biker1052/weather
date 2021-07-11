@@ -1,7 +1,6 @@
-package kg.tutorialapp.weather
+package kg.tutorialapp.weather.network
 
 
-import kg.tutorialapp.weather.network.WeatherAPI
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

@@ -10,7 +10,7 @@ import kg.tutorialapp.weather.ForeCast
 
 @Database(
         entities = [ForeCast::class],
-        version = 1,
+        version = 2,
         exportSchema = false
 )
 @TypeConverters(ModelsConverter::class, CollectionsConverter::class)

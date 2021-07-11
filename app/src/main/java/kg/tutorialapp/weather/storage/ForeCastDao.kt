@@ -9,7 +9,7 @@ import kg.tutorialapp.weather.ForeCast
 
 @Dao
 interface ForeCastDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(forecast: ForeCast)
 
     @Update
@@ -26,4 +26,5 @@ interface ForeCastDao {
 
     @Query("delete  from ForeCast")
     fun deleteAll(): Completable
+
 }
