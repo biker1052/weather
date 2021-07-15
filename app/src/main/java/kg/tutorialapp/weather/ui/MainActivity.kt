@@ -101,7 +101,6 @@ class MainActivity : AppCompatActivity() {
                 setValuesToViews(it)
                 loadWeatherIcon(it)
                 setItemsToRecyclerView(it)
-
             }
         }
 
